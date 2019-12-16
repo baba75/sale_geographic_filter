@@ -1,38 +1,48 @@
+<?xml version="1.0"?>
 <odoo>
   <data>
-  <!-- Update sale order search view!-->
-  <record id="sale_order_groupby_geographic" model="ir.ui.view">
-    <field name="name">sale.order.groupby.geographic</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_sales_order_filter"/>
-    <field name="arch" type="xml">
-      <xpath expr="//field[@name='user_id']" position="after">
-        <field name="country_id"/>
-        <field name="state_id"/>
-      </xpath>
-      <xpath expr="//filter[@name='customer']" position="after">
-        <filter string="Country" domain="[]" context="{'group_by':'country_id'}"/>
-        <filter string="State" domain="[]" context="{'group_by':'state_id'}"/>
-      </xpath>
-    </field>
-  </record>
-      
-  <!-- Update account invoice search view!-->
-  <record id="account_invoice_groupby_geographic" model="ir.ui.view">
-    <field name="name">account.invoice.groupby.geographic</field>
-    <field name="model">account.invoice</field>
-    <field name="inherit_id" ref="account.view_account_invoice_filter"/>
-    <field name="arch" type="xml">
-      <xpath expr="//field[@name='user_id']" position="after">
-        <field name="country_id"/>
-        <field name="state_id"/>
-      </xpath>
-      <xpath expr="//group/filter[@name='status']" position="after">
-        <filter string="Country" domain="[]" context="{'group_by':'country_id'}"/>
-        <filter string="State" domain="[]" context="{'group_by':'state_id'}"/>
-      </xpath>
-    </field>
-  </record>
-
+    <!-- Update sale order search view!-->
+    <record id="sale_order_groupby_geographic" model="ir.ui.view">
+      <field name="name">sale.order.groupby.geographic</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='user_id']" position="after">
+          <field name="country_id"/>
+          <field name="state_id"/>
+        </xpath>
+        <xpath expr="//filter[@name='customer']" position="after">
+          <filter string="Country" domain="[]" context="{'group_by':'country_id'}"/>
+          <filter string="State" domain="[]" context="{'group_by':'state_id'}"/>
+        </xpath>
+      </field>
+    </record>
+    <!-- Update account invoice search view!-->
+    <record id="account_invoice_groupby_geographic" model="ir.ui.view">
+      <field name="name">account.invoice.groupby.geographic</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='user_id']" position="after">
+          <field name="country_id"/>
+          <field name="state_id"/>
+        </xpath>
+        <xpath expr="//group/filter[@name='status']" position="after">
+          <filter string="Country" domain="[]" context="{'group_by':'country_id'}"/>
+          <filter string="State" domain="[]" context="{'group_by':'state_id'}"/>
+        </xpath>
+      </field>
+    </record>
+<!-- Update customers search view -->
+        <record id="res_partner_groupby_geographic" model="ir.ui.view">
+            <field name="name">res.partner.groupby.geographic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/filter[@name='group_country']" position="after">
+                    <filter string="State" domain="[]" context="{'group_by':'state_id'}"/>
+                </xpath>
+            </field>
+        </record>
   </data>
 </odoo>
